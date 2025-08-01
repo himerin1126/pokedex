@@ -3,7 +3,6 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   experimental: {
-    missingSuspenseWithCSRError: false,
   },
   typescript: {
     ignoreBuildErrors: false,

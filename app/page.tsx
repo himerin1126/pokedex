@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import SearchForm from '@/app/components/SearchForm';
 import { fetchPokemon, Pokemon } from '@/app/lib/fetchPokemon';
 import PokemonCard from '@/app/components/PokemonCard';
@@ -8,6 +8,10 @@ import PokemonCard from '@/app/components/PokemonCard';
 export default function Home() {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [pokemonName, setPokemonName] = useState([]);
+
+
+
 
   const handleSearch = async (query: string) => {
     setError(null);
@@ -18,6 +22,11 @@ export default function Home() {
       setError(err instanceof Error ? err.message : 'An error occurred');
       setPokemon(null);
     }
+
+      <div className="card">
+        <h4 className="cardNames">{pokemonName}</h4>
+      </div>
+    
   };
 
   return (
@@ -32,4 +41,7 @@ export default function Home() {
       )}
     </main>
   );
+  <div className="card">
+  <h4 className="cardNames">{pokemonName}</h4>
+</div>
 } 

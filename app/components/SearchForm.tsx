@@ -13,6 +13,7 @@ export default function SearchForm({ onSearch }: Props) {
     if (value.trim()) onSearch(value.trim());
   };
 
+
   return (
     <form onSubmit={handleSubmit} className="flex gap-2">
       <input

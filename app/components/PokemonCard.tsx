@@ -19,9 +19,9 @@ export default function PokemonCard({ pokemon }: Props) {
       <div className="mt-4">
         <h3 className="font-medium">タイプ</h3>
         <ul className="flex gap-2">
-          {pokemon.types.map((t) => (
-            <li key={t.type.name} className="px-2 py-0.5 bg-gray-100 rounded">
-              {t.type.name}
+          {pokemon.types.map((t, index) => (
+            <li key={index} className="px-2 py-0.5 bg-gray-100 rounded">
+              {t}
             </li>
           ))}
         </ul>
@@ -30,9 +30,9 @@ export default function PokemonCard({ pokemon }: Props) {
       <div className="mt-4">
         <h3 className="font-medium">ステータス</h3>
         <ul>
-          {pokemon.stats.map((s) => (
-            <li key={s.stat.name} className="flex justify-between">
-              <span>{s.stat.name}</span>
+          {pokemon.stats.map((s, index) => (
+            <li key={index} className="flex justify-between">
+              <span>{s.statName}</span>
               <span>{s.base_stat}</span>
             </li>
           ))}
