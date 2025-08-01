@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: .
+      target: dev
+    volumes:
+      - .:/app              # プロジェクト全体をマウント
+      - /app/node_modules   # node_modules はコンテナ内キャッシュ
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development

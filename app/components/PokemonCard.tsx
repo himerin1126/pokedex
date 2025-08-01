@@ -1,0 +1,43 @@
+'use client';
+
+import Image from 'next/image';
+import { Pokemon } from '@/app/lib/fetchPokemon';
+
+interface Props {
+  pokemon: Pokemon;
+}
+
+export default function PokemonCard({ pokemon }: Props) {
+  return (
+    <div className="border rounded-lg p-4 shadow-md">
+      <div className="flex items-center gap-4">
+        <Image src={pokemon.sprites.front_default} alt={pokemon.name} width={96} height={96} />
+        <h2 className="text-xl font-semibold capitalize">{pokemon.name}</h2>
+        <span className="text-gray-500">#{pokemon.id}</span>
+      </div>
+
+      <div className="mt-4">
+        <h3 className="font-medium">タイプ</h3>
+        <ul className="flex gap-2">
+          {pokemon.types.map((t) => (
+            <li key={t.type.name} className="px-2 py-0.5 bg-gray-100 rounded">
+              {t.type.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-4">
+        <h3 className="font-medium">ステータス</h3>
+        <ul>
+          {pokemon.stats.map((s) => (
+            <li key={s.stat.name} className="flex justify-between">
+              <span>{s.stat.name}</span>
+              <span>{s.base_stat}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
