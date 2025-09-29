@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { Pokemon } from '@/app/lib/fetchPokemon';
+import Link from 'next/link';
 
 interface Props {
   pokemon: Pokemon;
@@ -39,5 +40,15 @@ export default function PokemonCard({ pokemon }: Props) {
         </ul>
       </div>
     </div>
+  );
+
+  return (
+    <Link href={`/pokemon/${pokemon.name}`}>
+      <div className="border rounded p-4 hover:shadow-lg transition text-center">
+        <img src={pokemon.sprites.front_default} alt={pokemon.name} className="mx-auto mb-2" />
+        <h3 className="capitalize font-bold">{pokemon.name}</h3>
+        <p>ID: {pokemon.id}</p>
+      </div>
+    </Link>
   );
 }
